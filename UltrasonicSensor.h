@@ -1,7 +1,7 @@
 #ifndef _ULTRASONIC_SENSOR_H
 #define _ULTRASONIC_SENSOR_H
 #include "Sensor.h"
-#include "hcsr04.h"
+#include "hcsr04/hcsr04.h"
 #include <iostream>
 #include <exception>
 #include <mraa.hpp>
