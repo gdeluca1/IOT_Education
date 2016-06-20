@@ -87,8 +87,8 @@ HCSR04::timing() {
 	
 	// Do not wait for more than 25 ms.
 	int timer = 0;
-    while (!m_doWork && timer++ < 5) {
-        usleep(5 * 1000); // 5 ms
+    while (!m_doWork && timer++ < 5000) {
+        usleep(5);
     }
 
     return m_FallingTimeStamp - m_RisingTimeStamp;
