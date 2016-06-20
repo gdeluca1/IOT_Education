@@ -1,6 +1,6 @@
 CC = g++ -std=c++11
 CFLAGS += -Wall -g
-LDFLAGS = -lmraa -lupm-grove -lpthread -lupm-hcsr04 -lboost_system -lboost_filesystem -lboost_thread-mt -lrt -lboost_timer -lboost_chrono 
+LDFLAGS = -lmraa -lupm-grove -lpthread
 
 all: thread_test edison_robot
 
