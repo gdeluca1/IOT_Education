@@ -68,7 +68,5 @@ private:
 
 };
 
-upm::HCSR04 * UltrasonicSensor::ultrasonicSensor1 = NULL;	
-
 #endif
 
