@@ -1,10 +1,11 @@
 #ifndef _ULTRASONIC_SENSOR_H
 #define _ULTRASONIC_SENSOR_H
 #include "Sensor.h"
+#include "hcsr04/hcsr04.h"
 #include <iostream>
 #include <exception>
 #include <mraa.hpp>
-#include <hcsr04.h>
+//#include <hcsr04.h>
 #include <functional>
 #include <stdexcept>
 #include <boost/thread/thread.hpp>
@@ -22,20 +23,7 @@ public:
 	//TODO: Eliminate this and bind upm::HCSR04 objects to a callback, eliminating static objects and callbacks
 	static HCSR04 * get_hcsr04(int trig_pin, int echo_pin)
 	{
-
-		//find first NULL static member, and instantiate it
-		//instantiate the sensor and return the reference
-		if(UltrasonicSensor::ultrasonicSensor1 == NULL)
-		{
-			UltrasonicSensor::ultrasonicSensor1 = new upm::HCSR04(trig_pin, echo_pin);
-			return UltrasonicSensor::ultrasonicSensor1;
-		}
-		else
-		{
-			//we were unable to find an available sensor
-			throw std::runtime_error("Unable to allocate additional HCSR04 sensor.  Not enough static sensors");
-		}
-		return NULL;
+		return new HCSR04(trig_pin, echo_pin);
 	}
 
 /* End static members, start public instance members */
@@ -53,22 +41,6 @@ public:
 		//this works even for that case.  Again, the static member setup is certainly not ideal.
 		delete this->m_ultrasonicSensor;
 	}
-
-	/*
-	 This struct allows us to call the getDistance function asynchronously and
-	 kill the thread if the execution is halted inside the intel library.
-	 I have submitted an issue concerning the blocked execution in the Intel library here:
-	https://github.com/intel-iot-devkit/upm/issues/343
-	In the mean time we will use this async call to circumvent the infinite loop
-	 */
-	struct value_func_struct {
-		float read_value;
-		upm::HCSR04 * sensor_ref;
-		void operator () () {
-			read_value = sensor_ref->getDistance(CM);
-		}
-
-	};
 	/*
 	Routine Description:
 	Read from the ultrasonic sensor and return the value
