@@ -11,7 +11,7 @@ ultrasonic_example.o: ultrasonic_example.cpp
 	${CC} -c ultrasonic_example.cpp ${CFLAGS} ${LDFLAGS}
 	
 hcsr04.o: ../hcsr04/hcsr04.cpp
-	${CC} -c ../hcsr04.cpp ${CFLAGS} ${LDFLAGS}
+	${CC} -c ../hcsr04/hcsr04.cpp ${CFLAGS} ${LDFLAGS}
 
 Sensor.o: ../Sensor.cpp 
 	${CC} -c ../Sensor.cpp ${CFLAGS} ${LDFLAGS}
