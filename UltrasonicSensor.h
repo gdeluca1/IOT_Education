@@ -23,7 +23,7 @@ public:
 	//TODO: Eliminate this and bind upm::HCSR04 objects to a callback, eliminating static objects and callbacks
 	static HCSR04 * get_hcsr04(int trig_pin, int echo_pin)
 	{
-		return new HCSR04::HCSR04(trig_pin, echo_pin);
+		return new HCSR04(trig_pin, echo_pin);
 	}
 
 /* End static members, start public instance members */
