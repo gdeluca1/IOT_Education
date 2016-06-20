@@ -4,7 +4,7 @@ LDFLAGS = -lmraa -lupm-grove -lpthread -lupm-hcsr04 -lboost_system -lboost_files
 
 all: test_ultrasonic
 
-test_ultrasonic: ultrasonic_example.o Sensor.o
+test_ultrasonic: ultrasonic_example.o Sensor.o hcsr04.o
 	${CC} -o $@ ultrasonic_example.o Sensor.o ${CFLAGS} ${LDFLAGS}
 
 ultrasonic_example.o: ultrasonic_example.cpp
