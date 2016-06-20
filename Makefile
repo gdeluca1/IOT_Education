@@ -1,6 +1,6 @@
 CC = g++ -std=c++11
 CFLAGS += -Wall -g
-LDFLAGS = -lmraa -lupm-grove -lpthread
+LDFLAGS = -lmraa -lupm-grove -lpthread -lupm-hcsr04 -lboost_system -lboost_filesystem -lboost_thread-mt -lrt -lboost_timer -lboost_chrono 
 
 all: thread_test edison_robot
 
@@ -29,4 +29,3 @@ edison_robot.o: edison_robot.cpp
 	${CC} -c edison_robot.cpp ${CFLAGS} ${LDFLAGS}
 clean:
 	rm -f example *.o *.core *.gch ./*~
-
