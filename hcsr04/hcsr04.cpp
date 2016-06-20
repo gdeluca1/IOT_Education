@@ -96,7 +96,7 @@ HCSR04::timing() {
 
 void
 HCSR04::ackEdgeDetected (void *ctx) {
-    upm::HCSR04 *This = (upm::HCSR04 *)ctx;
+    HCSR04 *This = (HCSR04 *)ctx;
     struct timeval timer;
     gettimeofday(&timer, NULL);
 
