@@ -83,6 +83,7 @@ HCSR04::timing() {
     mraa_gpio_write (m_triggerPinCtx, 0);
 
     m_doWork = 0;
+	m_FallingTimeStamp = 0;
     m_InterruptCounter = 0;
 	
 	// Do not wait for more than 25 ms.
