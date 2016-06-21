@@ -91,7 +91,7 @@ HCSR04::timing() {
         usleep(5);
     }
 
-    return m_FallingTimeStamp - m_RisingTimeStamp;
+    return timer >= 5000 ? 0 : (m_FallingTimeStamp - m_RisingTimeStamp);
 }
 
 void
