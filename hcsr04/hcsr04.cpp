@@ -83,22 +83,15 @@ HCSR04::timing() {
     mraa_gpio_write (m_triggerPinCtx, 0);
 
     m_doWork = 0;
-	m_FallingTimeStamp = 0;
     m_InterruptCounter = 0;
 	
 	// Do not wait for more than 25 ms.
 	int timer = 0;
-    while (!m_doWork && timer++ < 5000) {
+    while (!m_doWork && timer++ < 1000) {
         usleep(5);
     }
-
-	if (timer >= 5000)
-	{
-		m_FallingTimeStamp = 0;
-		m_RisingTimeStamp = 0;
-	}
 	
-    return timer >= 5000 ? 0 : (m_FallingTimeStamp - m_RisingTimeStamp);
+    return timer >= 1000 ? 0 : (m_FallingTimeStamp - m_RisingTimeStamp);
 }
 
 void
